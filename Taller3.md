@@ -1,6 +1,6 @@
 ```
 package umariana.taller3;
-
+//Sergio Morillo y Johan Serrano
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
