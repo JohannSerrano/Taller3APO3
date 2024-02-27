@@ -1,6 +1,6 @@
 ```
 package mundo;
-
+// Sergio Morillo y Johan Serrano
 public class Entrada {
     private int idEntrada;
     private String fecha;
