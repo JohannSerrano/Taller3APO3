@@ -1,6 +1,6 @@
 ```
 package umariana.taller3;
-//Sergio Morillo y Johan Serrano
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -114,32 +114,26 @@ public class Taller3 {
     }
 
     private void eliminarEntrada() {
-        System.out.print("Ingrese el ID de la Entrada que desea eliminar: ");
-        int idEntradaEliminar = lector.nextInt();
-        lector.nextLine(); // Consumir el salto de línea
-
-        Entrada entradaEliminar = null;
-        for (Entrada entrada : misEntradas) {
-            if (entrada.getIdEntrada() == idEntradaEliminar) {
-                entradaEliminar = entrada;
-                break;
-            }
-        }
-
-        if (entradaEliminar != null) {
-            System.out.print("¿Está seguro de eliminar esta Entrada? (1. Si/2. No): ");
-            int confirmacion = lector.nextInt();
-            if (confirmacion==1) {
-                misEntradas.remove(entradaEliminar);
-                System.out.println("La Entrada ha sido eliminada correctamente.");
-            } else if(confirmacion==2){
-                System.out.println("Se cancelo correctamente");
-            }else if(confirmacion!=1 && confirmacion!=2){
-                System.out.println("Esta opcion no existe");
-        } else {
-            System.out.println("No se encontró ninguna Entrada con el ID proporcionado.");
-        }
-        }
+       System.out.println("Ingre el id del producto a eliminar");
+       int id =lector.nextInt();
+       for(Entrada e: misEntradas){
+           if(e.getIdEntrada()==id){
+               System.out.println("Seguro que quieres eliminar?\n1 SI\n2 NO");
+               int opcion = lector.nextInt();
+               if(opcion==1){
+               misEntradas.remove(e);
+               System.out.println("Entrada removido satisfactoriamente");
+               }else if(opcion==2){
+                   System.out.println("Se cancelo eliminar Entrada");
+               }else if(opcion!=1 && opcion!=2){
+                   System.out.println("No se encontro la opcion vuelves al inicio");
+               }
+               break;
+           }else {
+               System.out.println("no se encontro ningun producto");
+           }
+           
+       }
     }
 
     public static void main(String[] args) {
@@ -147,4 +141,7 @@ public class Taller3 {
         diario.mostrarMenu();
     }
 }
+
+// Suposición de implementación de la clase Entrada en el paquete mundo
+
 ```
