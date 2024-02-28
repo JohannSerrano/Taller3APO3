@@ -10,12 +10,13 @@ import mundo.Entrada;
 public class Taller3 {
     private ArrayList<Entrada> misEntradas;
     private Scanner lector;
-
+    
+//Inicializa la lista de entradas y el escanner
     public Taller3() {
         misEntradas = new ArrayList<>();
         lector = new Scanner(System.in);
     }
-
+//Metodo para mostrar menu de opciones
     public void mostrarMenu() {
         boolean activo = true;
         do {
@@ -57,21 +58,22 @@ public class Taller3 {
             }
         } while (activo);
     }
-
+//Metodo para agregar una entrada
     private void agregarEntrada() {
         System.out.print("Ingrese la Descripcion: ");
         String descripcion = lector.nextLine();
         System.out.println("===========================================");
 
-           int nuevoIdEntrada = misEntradas.size() + 1;
+           int IdEntrada = misEntradas.size() + 1;
 
 
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
         String fecha = formatoFecha.format(fechaActual);
 
-        Entrada nuevaEntrada = new Entrada(nuevoIdEntrada, fecha, descripcion);
+        Entrada nuevaEntrada = new Entrada(IdEntrada, fecha, descripcion);
         misEntradas.add(nuevaEntrada);
+        System.out.println("La ID asignada es : "+IdEntrada+"\nLa fecha asignada es : "+fecha);
 
         System.out.println("La Entrada ha sido agregada con éxito!");
     }
@@ -95,16 +97,16 @@ public class Taller3 {
     }
 
 
-
+//Metodo para modificar la descripcion de una Entrada
     private void modificarEntrada() {
         System.out.print("Ingrese el ID de la Entrada que desea modificar: ");
         int idEntradaModificar = lector.nextInt();
         lector.nextLine(); // Consumir el salto de línea
 
-        for (Entrada entrada : misEntradas) {
-            if (entrada.getIdEntrada() == idEntradaModificar) {
+        for (Entrada e : misEntradas) {
+            if (e.getIdEntrada() == idEntradaModificar) {
                 System.out.print("Ingrese la nueva Descripcion: ");
-                entrada.setDescripcion(lector.nextLine());
+                e.setDescripcion(lector.nextLine());
                 System.out.println("La Descripcion ha sido modificada con éxito.");
                 return;
             }
@@ -112,12 +114,13 @@ public class Taller3 {
 
         System.out.println("No se encontró ninguna Entrada con el ID ");
     }
-
+//Metodo para eliminar una Entrada 
     private void eliminarEntrada() {
-       System.out.println("Ingre el id del producto a eliminar");
+       System.out.println("Ingrese el id del producto a eliminar");
        int id =lector.nextInt();
        for(Entrada e: misEntradas){
            if(e.getIdEntrada()==id){
+               //Confirmacion de eliminacion
                System.out.println("Seguro que quieres eliminar?\n1 SI\n2 NO");
                int opcion = lector.nextInt();
                if(opcion==1){
@@ -135,13 +138,13 @@ public class Taller3 {
            
        }
     }
-
+     /**
+     * Método principal para ejecutar el programa.
+     */
     public static void main(String[] args) {
         Taller3 diario = new Taller3();
         diario.mostrarMenu();
     }
 }
-
-// Suposición de implementación de la clase Entrada en el paquete mundo
 
 ```
